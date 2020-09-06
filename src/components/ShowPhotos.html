@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相册展示</title>
+        <style>
+        #app{
+            position: relative;
+            width: 500px;
+        }
+        img{
+            width: 500px;
+        }
+        #left{
+            position: absolute;
+            top: 150px;
+            left: 0;
+        }
+        #right{
+            position: absolute;
+            top: 150px;
+            right: 0;
+        }
+        button{
+            width: 30px;
+            height: 60px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <img :src="imgArr[showidx]">
+        <div id="btns">
+            <button id="left" @click="left()">&lt;</button>
+            <button id="right" @click="right()">&gt;</button>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                showidx:0,
+
+                imgArr:[
+                   './image/1.gif',
+                   './image/2.gif',
+                   './image/3.gif',
+                   './image/4.gif',
+                   './image/5.gif',
+                   './image/6.gif',
+                   './image/7.gif',
+                   './image/8.gif',
+                ]
+            },
+            methods:{
+                left(){
+                    this.showidx--;
+                    if(this.showidx <= -1){
+                        this.showidx = 3;
+                    }
+                    // this.imgUrl = this.imgArr[this.showidx];
+                    console.log(this.showidx)
+                },
+                right(){
+                    this.showidx++;
+                    if(this.showidx >= this.imgArr.length){
+                        this.showidx = 0;
+                    }
+                    // this.imgUrl = this.imgArr[this.showidx];
+                    console.log(this.showidx)
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>
