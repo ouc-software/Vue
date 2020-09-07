@@ -7,7 +7,7 @@
         </div>
         <!-- 相册展示 -->
 
-                <!-- 上传图片到后端，并且刷新之后显示新图片 -->
+        <!-- 上传图片到后端，并且刷新之后显示新图片 -->
         <div class="inner-width">
             <h1>My Gallery</h1>
             <div class="border"></div>
@@ -20,15 +20,18 @@
             </div>
         </div>
 
-        <div class="hello">
+       <!-- 此处一大段注释<div class="hello">
         <div class="imgArea">
             <div class="imgArea">
             <button id="load" @click="details">详细信息</button>
             <h2>图片上传预览</h2>
               <ul>
                 <li v-for="(item,index) in arr" :key="index">
-                <span>+</span>
-                <img v-if="item.src != ''" v-bind:src=" item.src || index " >
+             //   <span>+</span>
+                <a :href="item.src" class="image">
+                    <img v-if="item.src !='' v-bind:src=" item.src || index " alt="">
+                </a>
+
 
 
                 <input type="file" : @change="pushImg($event,index)" accept="image/jpeg,image/png,image/gif" alt="">
@@ -38,9 +41,15 @@
             </div>
         </div>
         <div class="tips" v-if="flag.change">添加成功</div>
-        </div>
+        </div> -->
 
+        <ul >
+          <li>
+             <button  @click="gotoDetailsPhoto"  >查看详细图片</button>
+          </li>
+        </ul>
     </div>
+
 </template>
 <script>
 export default {
@@ -71,9 +80,10 @@ export default {
                 $('#img_id').attr("src", re.target.result);
             }
         },
-          detail() {
-            this.$router.push({name:'ShowPhotos'});
-          },
+          gotoDetailsPhoto() {
+  	        this.$router.push({name:'ShowPhotos'})
+        },
+
           pushImg: function (e, i) {
             let mm = this.arr; let flag = this.flag; let file = e.target; let reader = new FileReader()
             reader.readAsDataURL(file.files[0])
@@ -154,21 +164,6 @@ export default {
       transform: scale(1.4) rotate(15deg);
 
   }
-  @media screen and (max-width:960px){
-      .gallery-section .image{
-          float: 33.33%;
-      }
-  }
-  @media screen and (max-width:768px){
-      .gallery-section .image{
-          float: 50%;
-      }
-  }
-  @media screen and (max-width:480px){
-      .gallery-section .image{
-          float: 100%;
-      }
-  }
   .hello{
     position: absolute;
     width: 100%;
@@ -222,4 +217,21 @@ export default {
     margin: 0 auto;
     border: 1px solid rosybrown;
   }
+
+  @media screen and (max-width:960px){
+      .gallery-section .image{
+          float: 33.33%;
+      }
+  }
+  @media screen and (max-width:768px){
+      .gallery-section .image{
+          float: 50%;
+      }
+  }
+  @media screen and (max-width:480px){
+      .gallery-section .image{
+          float: 100%;
+      }
+  }
+
 </style>

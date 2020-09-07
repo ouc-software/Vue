@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Album from '@/components/Album'
+import ShowPhotos from '@/components/ShowPhotos'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path:'/Album',
       name:'Album',
       component:Album
+    },
+    {
+      path:'/ShowPhotos',
+      name:'ShowPhotos',
+      component:ShowPhotos
     }
   ]
 
